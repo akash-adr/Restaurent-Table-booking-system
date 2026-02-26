@@ -1,0 +1,153 @@
+body {
+    background: #f3f4f6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-container {
+    padding: 60px 80px;
+}
+
+.dashboard-header h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+/* Stats */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card p {
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 32px;
+}
+
+.green {
+    color: #16a34a;
+}
+
+.red {
+    color: #dc2626;
+}
+
+/* Table Section */
+
+.table-section {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 20px 0 30px 0;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    font-size: 15px;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booking-table th,
+.booking-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status.reserved {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.status.cancelled {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.cancel-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #dc2626;
+    color: white;
+    cursor: pointer;
+}
+
+.cancel-btn.disabled {
+    background: #fca5a5;
+    cursor: not-allowed;
+}
+
+/* Modal */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    width: 450px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-light {
+    padding: 10px 20px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-dark {
+    padding: 10px 20px;
+    background: #111827;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}

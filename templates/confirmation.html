@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/confirmation.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<section class="confirm-wrapper">
+  <div class="confirm-container">
+    <!-- ORANGE HEADER -->
+    <div class="confirm-header">
+      <div class="check-circle">✓</div>
+      <h1>Booking Confirmed!</h1>
+      <p>Your table has been successfully reserved</p>
+    </div>
+
+    <!-- DETAILS SECTION -->
+    <div class="confirm-body">
+      <h2>Reservation Details</h2>
+
+      <div class="detail-card">
+        <div class="icon-circle">👤</div>
+        <div>
+          <span>Name</span>
+          <p>{{ data.name }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">📞</div>
+        <div>
+          <span>Mobile Number</span>
+          <p>{{ data.phone }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">✉️</div>
+        <div>
+          <span>Email Address</span>
+          <p>{{ data.email }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">📅</div>
+        <div>
+          <span>Date of Reservation</span>
+          <p>{{ data.date }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">⏰</div>
+        <div>
+          <span>Time Slot</span>
+          <p>{{ data.time }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">👥</div>
+        <div>
+          <span>Number of Persons</span>
+          <p>{{ data.guests }}</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="icon-circle">🪑</div>
+        <div>
+          <span>Seating Type</span>
+          <p>{{ data.seating_type }}</p>
+        </div>
+      </div>
+
+      <!-- INFO BOX -->
+      <div class="info-box">
+        A confirmation email has been sent to
+        <strong>{{ data.email }}</strong>. Please arrive 10 minutes before your
+        reservation time.
+      </div>
+
+      <a href="{{ url_for('index') }}" class="home-btn"> Back to Home </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

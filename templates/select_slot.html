@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/select_slot.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="booking-wrapper">
+  <div class="booking-card">
+
+    <div class="booking-header">
+      <h1>Reserve Your Table</h1>
+      <p>Book your dining experience with us</p>
+    </div>
+
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" class="booking-body">
+
+      <!-- Branch -->
+      <label>Select Branch</label>
+      <select name="branch" required>
+        <option value="">Choose a location</option>
+        {% for branch in ["JP Nagar","Jayanagar","BTM Layout","HSR Layout","Koramangala"] %}
+          <option value="{{ branch }}"
+            {% if previous and previous.branch == branch %}selected{% endif %}>
+            {{ branch }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <!-- Date -->
+      <label>Date of Reservation</label>
+      <input type="date"
+             name="date"
+             value="{{ previous.date if previous else '' }}"
+             required>
+
+      <!-- Guests -->
+      <label>Number of Persons</label>
+      <select name="guests" required>
+        <option value="">Select number of guests</option>
+        {% for i in range(1, 21) %}
+          <option value="{{ i }}"
+            {% if previous and previous.guests|int == i %}selected{% endif %}>
+            {{ i }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <!-- Seating -->
+      <label>Seating Preference</label>
+      <div class="seating-grid">
+        {% for seat in ["AC","Non-AC","Rooftop","Bar Counter"] %}
+          <input type="radio"
+                 name="seating_type"
+                 value="{{ seat }}"
+                 id="{{ seat|replace(' ','') }}"
+                 hidden
+                 {% if previous and previous.seating_type == seat %}checked{% endif %}
+                 required>
+          <label for="{{ seat|replace(' ','') }}" class="seat-btn">
+            {{ seat }}
+          </label>
+        {% endfor %}
+      </div>
+
+      <!-- Time -->
+      <label>Select Time Slot</label>
+      <div class="time-grid">
+        {% set times = [
+          "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
+          "1:00 PM","1:30 PM","2:00 PM","2:30 PM",
+          "6:00 PM","6:30 PM","7:00 PM","7:30 PM",
+          "8:00 PM","8:30 PM","9:00 PM","9:30 PM"
+        ] %}
+        {% for time in times %}
+          <input type="radio"
+                 name="time"
+                 value="{{ time }}"
+                 id="time{{ loop.index }}"
+                 hidden
+                 {% if previous and previous.time == time %}checked{% endif %}
+                 required>
+          <label for="time{{ loop.index }}" class="time-btn">
+            {{ time }}
+          </label>
+        {% endfor %}
+      </div>
+
+      <button type="submit" class="confirm-btn">
+        Confirm Reservation
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+{% endblock %}

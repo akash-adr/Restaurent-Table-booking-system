@@ -1,0 +1,204 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* This ensures footer stays at bottom */
+main {
+    flex: 1;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 70px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+/* LEFT */
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* CENTER */
+
+.nav-center {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-center a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #374151;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+/* Hover underline effect */
+
+.nav-center a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background-color: #ff7a00;
+    transition: 0.3s ease;
+}
+
+.nav-center a:hover {
+    color: #ff7a00;
+}
+
+.nav-center a:hover::after {
+    width: 100%;
+}
+
+/* RIGHT */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.location-icon {
+    width: 18px;
+    height: 18px;
+    color: #ff7a00;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+/* =================================
+   FOOTER
+================================= */
+
+.footer {
+    background-color: #0f172a;   /* Dark navy */
+    color: #ffffff;
+    padding: 40px 80px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.team-title {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+}
+
+.team-names {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+/* Admin Button */
+
+.admin-btn {
+    padding: 10px 22px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.admin-btn:hover {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .nav-center {
+        gap: 20px;
+    }
+
+    .brand-name {
+        display: none;
+    }
+}
+@media (max-width: 700px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        text-align: center;
+    }
+}

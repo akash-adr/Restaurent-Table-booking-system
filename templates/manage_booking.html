@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/manage_booking.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="manage-wrapper">
+
+  <h1 class="page-title">Table Reservation</h1>
+  <p class="page-subtitle">Your booking details</p>
+
+  <div class="reservation-card">
+
+    <div class="card-header">
+      {% if booking.status == "Cancelled" %}
+        <h2 class="cancelled">❌ Reservation Cancelled</h2>
+      {% else %}
+        <h2>🍴 Reservation Confirmed</h2>
+      {% endif %}
+      <p>Booking ID: #{{ booking.booking_id }}</p>
+    </div>
+
+    <div class="card-body">
+
+      <!-- ✅ SUCCESS MESSAGE -->
+      {% if request.args.get('updated') == "true" %}
+        <div class="success-message">
+          ✔ Update Successful
+        </div>
+      {% endif %}
+
+      <div class="info-row">
+        <strong>Name:</strong> {{ booking.name }}
+      </div>
+
+      <div class="info-row">
+        <strong>Phone:</strong> {{ booking.phone }}
+      </div>
+
+      <div class="info-row">
+        <strong>Date:</strong> {{ booking.date }}
+      </div>
+
+      <div class="info-row">
+        <strong>Time:</strong> {{ booking.time }}
+      </div>
+
+      <div class="info-row">
+        <strong>Guests:</strong> {{ booking.guests }}
+      </div>
+
+      <div class="info-row">
+        <strong>Seating:</strong> {{ booking.seating_type }}
+      </div>
+
+      <div class="info-row">
+        <strong>Branch:</strong> {{ booking.branch }}
+      </div>
+
+      <div class="action-buttons">
+
+        {% if booking.status != "Cancelled" %}
+
+          <a href="{{ url_for('modify_booking', booking_id=booking.booking_id) }}"
+             class="btn-primary">
+             Modify Reservation
+          </a>
+
+          <a href="{{ url_for('cancel_confirm_page', booking_id=booking.booking_id) }}"
+             class="btn-danger">
+             Cancel Reservation
+          </a>
+
+        {% else %}
+          <button class="btn-disabled">Reservation Cancelled</button>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/modify_booking.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="modify-wrapper">
+
+  <div class="modify-card">
+
+    <!-- Header -->
+    <div class="modify-header">
+      <h1>Modify Your Reservation</h1>
+      <p>Update your dining experience with us</p>
+
+      <div class="reservation-id">
+        Reservation ID: {{ booking.booking_id }}
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form method="POST" class="modify-form">
+
+      <!-- Branch -->
+      <div class="form-group">
+        <label>📍 Select Branch</label>
+        <select name="branch" required>
+          <option value="JP Nagar"
+            {% if booking.branch == "JP Nagar" %}selected{% endif %}>
+            JP Nagar
+          </option>
+          <option value="Jayanagar"
+            {% if booking.branch == "Jayanagar" %}selected{% endif %}>
+            Jayanagar
+          </option>
+          <option value="BTM Layout"
+            {% if booking.branch == "BTM Layout" %}selected{% endif %}>
+            BTM Layout
+          </option>
+          <option value="HSR Layout"
+            {% if booking.branch == "HSR Layout" %}selected{% endif %}>
+            HSR Layout
+          </option>
+          <option value="Koramangala"
+            {% if booking.branch == "Koramangala" %}selected{% endif %}>
+            Koramangala
+          </option>
+        </select>
+      </div>
+
+      <!-- Date -->
+      <div class="form-group">
+        <label>📅 Date of Reservation</label>
+        <input type="date" name="date"
+               value="{{ booking.date }}" required>
+      </div>
+
+      <!-- Guests -->
+      <div class="form-group">
+        <label>👥 Number of Persons</label>
+        <select name="guests" required>
+          {% for i in range(1, 11) %}
+            <option value="{{ i }}"
+              {% if booking.guests == i %}selected{% endif %}>
+              {{ i }} Person{% if i > 1 %}s{% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Seating Preference -->
+      <div class="form-group">
+        <label>🏠 Seating Preference</label>
+
+        <div class="seating-grid">
+          {% set seatings = ["Indoor", "Outdoor", "Window Side", "Bar Counter"] %}
+          {% for seat in seatings %}
+          <label class="seat-option">
+            <input type="radio"
+                   name="seating_type"
+                   value="{{ seat }}"
+                   {% if booking.seating_type == seat %}checked{% endif %}>
+            <span>{{ seat }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Time Slot -->
+      <div class="form-group">
+        <label>⏰ Select Time Slot</label>
+
+        <div class="time-grid">
+          {% set times = [
+            "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
+            "1:00 PM","1:30 PM","2:00 PM","2:30 PM",
+            "6:00 PM","6:30 PM","7:00 PM","7:30 PM",
+            "8:00 PM","8:30 PM","9:00 PM","9:30 PM"
+          ] %}
+          {% for t in times %}
+          <label class="time-option">
+            <input type="radio"
+                   name="time"
+                   value="{{ t }}"
+                   {% if booking.time == t %}checked{% endif %}>
+            <span>{{ t }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn-primary">
+          Update Reservation
+        </button>
+
+        <button type="reset" class="btn-secondary">
+          Reset Changes
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

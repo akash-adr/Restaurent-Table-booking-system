@@ -1,0 +1,132 @@
+/* ===============================
+   ADMIN LOGIN PAGE
+================================ */
+
+body {
+    background-color: #f3f4f6;
+}
+
+/* Center Wrapper */
+
+.admin-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Card */
+
+.admin-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    padding: 60px 60px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* Icon */
+
+.admin-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px auto;
+    background: #fde7d2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+/* Headings */
+
+.admin-card h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Labels */
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+/* Input Group */
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+.input-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Button */
+
+.login-btn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    background-color: #030712;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #ff7a00;
+}
+
+/* Demo Box */
+
+.demo-box {
+    margin-top: 40px;
+    background: #eef2ff;
+    padding: 20px;
+    border-radius: 12px;
+    color: #1e3a8a;
+    text-align: left;
+    font-size: 15px;
+}
+
+.demo-box span {
+    font-weight: 600;
+}
+
+/* Error */
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}

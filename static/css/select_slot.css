@@ -1,0 +1,136 @@
+body {
+  background: #f5ead9;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.booking-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.booking-card {
+  width: 700px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.booking-header {
+  background: linear-gradient(135deg,#ff7a00,#ff4d00);
+  padding: 40px;
+  color: white;
+}
+
+.booking-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.booking-header p {
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+/* Body */
+.booking-body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-weight: 600;
+  color: #444;
+}
+
+select,
+input[type="date"] {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+select:focus,
+input:focus {
+  border-color: #ff6a00;
+  outline: none;
+}
+
+/* Seating Buttons */
+.seating-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.seat-btn {
+  padding: 16px;
+  text-align: center;
+  border-radius: 14px;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.seat-btn:hover {
+  border-color: #ff6a00;
+}
+
+input[type="radio"]:checked + .seat-btn {
+  border-color: #ff6a00;
+  background: #fff3e6;
+  color: #ff6a00;
+}
+
+/* Time Grid */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.time-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.time-btn:hover {
+  border-color: #ff6a00;
+}
+
+input[type="radio"]:checked + .time-btn {
+  border-color: #ff6a00;
+  background: #fff3e6;
+  color: #ff6a00;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  margin-top: 25px;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#ff7a00,#ff4d00);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,106,0,0.4);
+}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/cancel_flow.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="cancel-wrapper">
+
+  <div class="cancel-card">
+
+    <!-- Reservation Details -->
+    <h2 class="section-title">Reservation Details</h2>
+
+    <div class="details-box">
+
+      <div class="detail-item">
+        <span>👤 {{ booking.name }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span>📞 {{ booking.phone }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span>👥 {{ booking.guests }} Guests</span>
+      </div>
+
+      <div class="detail-item">
+        <span>📅 {{ booking.date }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span>⏰ {{ booking.time }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span>🍽️ {{ booking.seating_type }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span>📍 {{ booking.branch }}</span>
+      </div>
+
+    </div>
+
+    <!-- Confirmation Question -->
+    <h1 class="cancel-question">
+      Are you sure you want to cancel?
+    </h1>
+
+    <div class="button-group">
+
+      <a href="{{ url_for('manage_booking', booking_id=booking.booking_id) }}"
+         class="btn-light">
+        No, Go Back
+      </a>
+
+      <a href="{{ url_for('confirm_cancel_booking', booking_id=booking.booking_id) }}"
+         class="btn-danger">
+        Yes, Cancel
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

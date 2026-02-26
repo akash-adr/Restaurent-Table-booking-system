@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/cancel_flow.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="cancel-wrapper">
+
+  <div class="cancel-card success-card">
+
+    <div class="cancel-icon">
+      ✖
+    </div>
+
+    <h1>Reservation Cancelled</h1>
+
+    <p class="success-text">
+      Your reservation has been successfully cancelled.
+    </p>
+
+    <a href="{{ url_for('index') }}" class="btn-light full">
+      Return Home
+    </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

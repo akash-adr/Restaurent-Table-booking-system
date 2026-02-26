@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/user_details.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<section class="reserve-section">
+  <!-- Top Icon -->
+  <div class="reserve-icon">
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M3 2l6 6"></path>
+      <path d="M21 2l-6 6"></path>
+      <path d="M3 22l6-6"></path>
+      <path d="M21 22l-6-6"></path>
+    </svg>
+  </div>
+
+  <!-- Title -->
+  <h1>Reserve Your Table</h1>
+  <p class="subtitle">Welcome! Please enter your details to continue</p>
+
+  <!-- Form Card -->
+  <div class="reserve-card">
+    <form method="POST">
+      <!-- Full Name -->
+      <label>Full Name</label>
+      <div class="input-group">
+        <span class="input-icon">👤</span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          required
+        />
+      </div>
+
+      <!-- Phone -->
+      <label>Phone Number</label>
+      <div class="input-group">
+        <span class="input-icon">📞</span>
+        <input type="tel" name="phone" placeholder="+91 98765 43210" required />
+      </div>
+
+      <!-- Email -->
+      <label>Email Address</label>
+      <div class="input-group">
+        <span class="input-icon">✉️</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="your.email@example.com"
+          required
+        />
+      </div>
+
+      <button type="submit" class="reserve-btn">Proceed to Booking</button>
+    </form>
+  </div>
+
+  <p class="security-text">
+    Your information is secure and will only be used for reservation purposes
+  </p>
+</section>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+/* =================================
+   RESERVE SECTION
+================================= */
+
+.reserve-section {
+    min-height: 100vh;
+    background: #f4efe6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Top Icon */
+
+.reserve-icon {
+    width: 90px;
+    height: 90px;
+    background: #ff4d00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Title */
+
+.reserve-section h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+/* Card */
+
+.reserve-card {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+/* Labels */
+
+.reserve-card label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+/* Input Group */
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 12px 15px;
+    transition: 0.3s ease;
+}
+
+.input-group:focus-within {
+    border-color: #ff4d00;
+}
+
+.input-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* Button */
+
+.reserve-btn {
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #ff4d00;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.reserve-btn:hover {
+    background: #e84300;
+    transform: translateY(-2px);
+}
+
+/* Security Text */
+
+.security-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #6b7280;
+    max-width: 400px;
+}

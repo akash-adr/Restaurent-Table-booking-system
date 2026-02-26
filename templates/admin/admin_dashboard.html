@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h1>Restaurant Booking Dashboard</h1>
+    <p>Manage and track all table reservations</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <p>Total Reservations</p>
+      <h2 id="totalCount">{{ total_reservations }}</h2>
+    </div>
+
+    <div class="stat-card">
+      <p>Active Reservations</p>
+      <h2 class="green" id="activeCount">
+        {{ active_reservations }}
+      </h2>
+    </div>
+
+    <div class="stat-card">
+      <p>Cancelled</p>
+      <h2 class="red" id="cancelledCount">
+        {{ cancelled_reservations }}
+      </h2>
+    </div>
+
+  </div>
+
+  <!-- Table Section -->
+  <div class="table-section">
+
+    <h2>All Reservations</h2>
+
+    <input type="text"
+           id="searchInput"
+           placeholder="Search by name, email, phone..."
+           class="search-input">
+
+    <table class="booking-table">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Persons</th>
+          <th>Seating</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="bookingTable">
+        {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.name }}</td>
+          <td>{{ booking.email }}</td>
+          <td>{{ booking.phone }}</td>
+          <td>{{ booking.date }}</td>
+          <td>{{ booking.time }}</td>
+          <td>{{ booking.guests }}</td>
+          <td>{{ booking.seating_type }}</td>
+
+          <td>
+            {% if booking.status == "Cancelled" %}
+              <span class="status cancelled">Cancelled</span>
+            {% else %}
+              <span class="status reserved">Confirmed</span>
+            {% endif %}
+          </td>
+
+          <td>
+            {% if booking.status != "Cancelled" %}
+              <button class="cancel-btn"
+                      onclick="openModal('{{ booking.booking_id }}')">
+                ✕ Cancel
+              </button>
+            {% else %}
+              <button class="cancel-btn disabled" disabled>
+                ✕ Cancel
+              </button>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <h2>Cancel Reservation</h2>
+    <p>Are you sure you want to cancel this reservation?</p>
+
+    <div class="modal-actions">
+      <button onclick="closeModal()" class="btn-light">Cancel</button>
+      <a id="confirmLink" class="btn-dark">Confirm</a>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+
+<!-- 🔥 LIVE AUTO REFRESH -->
+<script>
+setInterval(() => {
+    fetch("/admin-live-data")
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("totalCount").innerText = data.total;
+            document.getElementById("activeCount").innerText = data.active;
+            document.getElementById("cancelledCount").innerText = data.cancelled;
+        });
+}, 3000);
+</script>
+
+{% endblock %}

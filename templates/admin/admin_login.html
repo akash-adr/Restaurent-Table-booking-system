@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin_login.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-wrapper">
+
+  <div class="admin-card">
+
+    <!-- Icon -->
+    <div class="admin-icon">
+      🍴
+    </div>
+
+    <h1>Restaurant Admin</h1>
+    <p class="subtitle">
+      Sign in to manage table bookings and reservations
+    </p>
+
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+
+      <!-- Admin ID -->
+      <label>Admin ID</label>
+      <div class="input-group">
+        <span class="input-icon">👤</span>
+        <input type="text"
+               name="username"
+               placeholder="Enter your admin ID"
+               required>
+      </div>
+
+      <!-- Password -->
+      <label>Password</label>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password"
+               name="password"
+               placeholder="Enter your password"
+               required>
+      </div>
+
+      <button type="submit" class="login-btn">
+        Login
+      </button>
+
+    </form>
+
+    <!-- Demo Box -->
+    <div class="demo-box">
+      <strong>Demo Credentials:</strong><br>
+      Admin ID: <span>admin</span><br>
+      Password: <span>admin123</span>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
